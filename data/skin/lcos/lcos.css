@@ -1,0 +1,7 @@
+/* Kablamo! lcos skin — GTK3 CSS.
+ * Decorations stay with Clearlooks / Phenix. We only tint the client.
+ */
+
+window.kablamo-window {
+  background-color: #C0C0C0;
+}

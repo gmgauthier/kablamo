@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Kablamo!
+Comment=A Minesweeper-shaped game for The Lunduke Computer Operating System
+Exec=kablamo
+Icon=kablamo
+Terminal=false
+Hidden=false
+Categories=GTK;Game;
+StartupWMClass=kablamo
+StartupNotify=true

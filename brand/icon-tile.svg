@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Kablamo!">
+  <rect x="2" y="2" width="60" height="60" rx="10" fill="#0B1D38"/>
+  <rect x="14" y="14" width="36" height="36" fill="#C0C0C0"/>
+  <rect x="16" y="16" width="10" height="10" fill="#E0E0E0" stroke="#808080"/>
+  <rect x="27" y="16" width="10" height="10" fill="#E0E0E0" stroke="#808080"/>
+  <rect x="38" y="16" width="10" height="10" fill="#B0B0B0" stroke="#404040"/>
+  <rect x="16" y="27" width="10" height="10" fill="#E0E0E0" stroke="#808080"/>
+  <circle cx="32" cy="32" r="7" fill="#111"/>
+  <circle cx="32" cy="32" r="2.2" fill="#C0C0C0"/>
+  <line x1="32" y1="22" x2="32" y2="25" stroke="#111" stroke-width="1.6"/>
+  <line x1="32" y1="39" x2="32" y2="42" stroke="#111" stroke-width="1.6"/>
+  <line x1="22" y1="32" x2="25" y2="32" stroke="#111" stroke-width="1.6"/>
+  <line x1="39" y1="32" x2="42" y2="32" stroke="#111" stroke-width="1.6"/>
+  <rect x="38" y="38" width="10" height="10" fill="#E0E0E0" stroke="#808080"/>
+</svg>
