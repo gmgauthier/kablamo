@@ -2,11 +2,17 @@
 
 **Vended by Grok Build**
 
+![Kablamo! on LCOS](brand/screenshot-startup.png)
+
 A **Minesweeper** for The Lunduke Computer Operating System (LCOS). The window is Windows 3.1 / 95 Minesweeper.
 
 Binary: `kablamo`. Unlicense.
 
 LCOS itself: [https://github.com/BryanLunduke/LCOS](https://github.com/BryanLunduke/LCOS)
+
+![In play](brand/screenshot-in-play.png)
+
+![Boom](brand/screenshot-died.png)
 
 ## Status
 
