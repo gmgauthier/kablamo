@@ -1,0 +1,25 @@
+Source: kablamo
+Section: games
+Priority: optional
+Maintainer: Greg Gauthier <gmgauthier@protonmail.com>
+Build-Depends:
+ debhelper-compat (= 13),
+ meson (>= 0.56),
+ ninja-build,
+ pkg-config,
+ g++,
+ libgtkmm-3.0-dev
+Standards-Version: 4.7.0
+Homepage: https://gitea.scriptorium/gmgauthier/kablamo
+Vcs-Git: https://gitea.scriptorium/gmgauthier/kablamo.git
+Vcs-Browser: https://gitea.scriptorium/gmgauthier/kablamo
+Rules-Requires-Root: no
+
+Package: kablamo
+Architecture: any
+Depends:
+ ${misc:Depends},
+ ${shlibs:Depends}
+Description: Minesweeper-shaped game for The Lunduke Computer Operating System
+ Kablamo! is a single-window gtkmm-3 clone of Windows 3.1 / 95 Minesweeper.
+ Fixed 9x9 board, 10 mines, no network.

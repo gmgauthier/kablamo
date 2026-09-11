@@ -13,7 +13,7 @@ LCOS already ships AisleRiot, Micropolis, Maelstrom, Zork. It does **not** ship 
 
 ## Status (2026-09-11)
 
-**M2 in tree.** Win95 chrome: LCD ghost segments, 3D face button, nested bevels, wrong-flag mine+X.
+**M3 in tree.** Packaging: `debian/`, `scripts/release.sh`, `INSTALL.md`. Tag `v0.1.0`.
 
 ## 1. Locked decisions
 
@@ -64,11 +64,11 @@ Scaffold. Empty 9×9 raised grid, face, counters at 10 / 000. New and F2 reset t
 
 Reveal / flood / flag / first-click safe / win / lose. Timer. Face states.
 
-### M2 — Chrome polish (this slice)
+### M2 — Chrome polish
 
 Win95 number colors, detonated mine, wrong-flag X, LCD polish. README: **Vended by Grok Build**.
 
-### M3 — Package
+### M3 — Package (this slice)
 
 `debian/`, `scripts/release.sh` (`.deb` + tarball + AppImage). Tag `v0.1.0`. Attach all three artifacts.
 

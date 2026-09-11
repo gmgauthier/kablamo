@@ -10,7 +10,7 @@ LCOS itself: [https://github.com/BryanLunduke/LCOS](https://github.com/BryanLund
 
 ## Status
 
-**M2 in tree.** Playable 9×9 with Win95 LCD, 3D face, and bevels. Packaging is M3.
+**v0.1.0 (M0–M3).** 9×9 Minesweeper: first-click safe, flags, Win95 LCD and face. See [INSTALL.md](INSTALL.md).
 
 | Doc | What |
 |---|---|
@@ -24,6 +24,8 @@ meson setup build
 meson compile -C build
 ./build/kablamo
 ```
+
+Install: [INSTALL.md](INSTALL.md).
 
 ## License
 

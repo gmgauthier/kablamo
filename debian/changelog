@@ -1,0 +1,5 @@
+kablamo (0.1.0-1) unstable; urgency=medium
+
+  * Initial package. gtkmm-3 Minesweeper for LCOS (milestones M0–M3).
+
+ -- Greg Gauthier <gmgauthier@protonmail.com>  Fri, 11 Sep 2026 19:56:24 +0100
