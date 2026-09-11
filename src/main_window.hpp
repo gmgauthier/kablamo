@@ -35,6 +35,7 @@ class MainWindow : public Gtk::Window {
 
   Gtk::Box root_{Gtk::ORIENTATION_VERTICAL, 0};
   Gtk::MenuBar menubar_;
+  Gtk::Frame chrome_;
   Gtk::Box well_{Gtk::ORIENTATION_VERTICAL, 6};
   Board board_;
   Hud hud_;

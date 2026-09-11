@@ -5,6 +5,7 @@
 #include <algorithm>
 #include <cmath>
 
+#include "bevel.hpp"
 #include "mine_field.hpp"
 
 namespace kablamo {
@@ -48,7 +49,7 @@ void seg_v(const Cairo::RefPtr<Cairo::Context>& cr, double x, double y, double h
 
 Hud::Hud()
 {
-  set_size_request(MineField::kPad * 2 + kW * MineField::kCell, 40);
+  set_size_request(MineField::kPad * 2 + kW * MineField::kCell, 44);
   set_hexpand(false);
   set_vexpand(false);
   add_events(Gdk::BUTTON_PRESS_MASK | Gdk::BUTTON_RELEASE_MASK);
@@ -85,24 +86,27 @@ void Hud::draw_digit(const Cairo::RefPtr<Cairo::Context>& cr, double x, double y
 {
   if (d < 0 || d > 9)
     d = 0;
-  const unsigned m = kSeg[d];
   const double w = 9.0;
   const double mid = 10.0;
-  cr->set_source_rgb(1.0, 0.15, 0.1);
-  if (m & 1)
-    seg_h(cr, x + 2, y, w);
-  if (m & 2)
-    seg_v(cr, x + 2 + w, y + 2, mid);
-  if (m & 4)
-    seg_v(cr, x + 2 + w, y + 2 + mid, mid);
-  if (m & 8)
-    seg_h(cr, x + 2, y + 2 + mid * 2, w);
-  if (m & 16)
-    seg_v(cr, x + 2, y + 2 + mid, mid);
-  if (m & 32)
-    seg_v(cr, x + 2, y + 2, mid);
-  if (m & 64)
-    seg_h(cr, x + 2, y + mid + 1, w);
+  auto paint = [&](unsigned m, double R, double G, double B) {
+    cr->set_source_rgb(R, G, B);
+    if (m & 1)
+      seg_h(cr, x + 2, y, w);
+    if (m & 2)
+      seg_v(cr, x + 2 + w, y + 2, mid);
+    if (m & 4)
+      seg_v(cr, x + 2 + w, y + 2 + mid, mid);
+    if (m & 8)
+      seg_h(cr, x + 2, y + 2 + mid * 2, w);
+    if (m & 16)
+      seg_v(cr, x + 2, y + 2 + mid, mid);
+    if (m & 32)
+      seg_v(cr, x + 2, y + 2, mid);
+    if (m & 64)
+      seg_h(cr, x + 2, y + mid + 1, w);
+  };
+  paint(0x7F, 0.35, 0.04, 0.04);
+  paint(kSeg[d], 1.0, 0.14, 0.08);
 }
 
 void Hud::draw_lcd(const Cairo::RefPtr<Cairo::Context>& cr, double x, double y, int value) const
@@ -111,6 +115,7 @@ void Hud::draw_lcd(const Cairo::RefPtr<Cairo::Context>& cr, double x, double y, 
     value = -99;
   if (value > 999)
     value = 999;
+  draw_bevel(cr, x - 2, y - 2, kLcdW + 4, kLcdH + 4, true, 2.0);
   cr->set_source_rgb(0.0, 0.0, 0.0);
   cr->rectangle(x, y, kLcdW, kLcdH);
   cr->fill();
@@ -136,6 +141,13 @@ void Hud::draw_lcd(const Cairo::RefPtr<Cairo::Context>& cr, double x, double y, 
 void Hud::draw_face(const Cairo::RefPtr<Cairo::Context>& cr, double cx, double cy,
                     double r) const
 {
+  const double bs = r * 2 + 6;
+  const double bx = cx - bs / 2.0;
+  const double by = cy - bs / 2.0;
+  gray(cr);
+  cr->rectangle(bx, by, bs, bs);
+  cr->fill();
+  draw_bevel(cr, bx, by, bs, bs, face_down_, 2.0);
   const double inset = face_down_ ? 1.0 : 0.0;
   cr->save();
   cr->translate(inset, inset);
@@ -195,29 +207,18 @@ bool Hud::in_face(double x, double y) const
 {
   const double cx = get_allocated_width() / 2.0;
   const double cy = get_allocated_height() / 2.0;
-  const double dx = x - cx;
-  const double dy = y - cy;
-  return dx * dx + dy * dy <= (kFaceR + 4) * (kFaceR + 4);
+  const double half = kFaceR + 4;
+  return x >= cx - half && x <= cx + half && y >= cy - half && y <= cy + half;
 }
 
 bool Hud::on_draw(const Cairo::RefPtr<Cairo::Context>& cr)
 {
   const int w = get_allocated_width();
   const int h = get_allocated_height();
-  cr->set_source_rgb(0.753, 0.753, 0.753);
+  gray(cr);
   cr->rectangle(0, 0, w, h);
   cr->fill();
-  cr->set_line_width(2.0);
-  cr->set_source_rgb(0.502, 0.502, 0.502);
-  cr->move_to(1, h - 1);
-  cr->line_to(1, 1);
-  cr->line_to(w - 1, 1);
-  cr->stroke();
-  cr->set_source_rgb(1.0, 1.0, 1.0);
-  cr->move_to(1, h - 1);
-  cr->line_to(w - 1, h - 1);
-  cr->line_to(w - 1, 1);
-  cr->stroke();
+  draw_bevel(cr, 0, 0, w, h, true, 2.0);
 
   const double ly = (h - kLcdH) / 2.0;
   draw_lcd(cr, 8, ly, remaining_);

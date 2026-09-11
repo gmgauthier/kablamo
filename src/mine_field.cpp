@@ -1,6 +1,7 @@
 /* SPDX-License-Identifier: Unlicense */
 
 #include "mine_field.hpp"
+#include "bevel.hpp"
 
 namespace kablamo {
 namespace {
@@ -145,7 +146,11 @@ void MineField::draw_flag(const Cairo::RefPtr<Cairo::Context>& cr, double x, dou
   cr->set_source_rgb(0.0, 0.0, 0.0);
   cr->set_line_width(1.4);
   cr->move_to(cx - 1, y + 5);
-  cr->line_to(cx - 1, y + s - 6);
+  cr->line_to(cx - 1, y + s - 7);
+  cr->stroke();
+  cr->set_line_width(1.2);
+  cr->move_to(cx - 5, y + s - 6);
+  cr->line_to(cx + 5, y + s - 6);
   cr->stroke();
   cr->set_source_rgb(1.0, 0.0, 0.0);
   cr->move_to(cx - 1, y + 5);
@@ -212,20 +217,10 @@ bool MineField::on_draw(const Cairo::RefPtr<Cairo::Context>& cr)
 {
   const int w = get_allocated_width();
   const int h = get_allocated_height();
-  cr->set_source_rgb(0.753, 0.753, 0.753);
+  gray(cr);
   cr->rectangle(0, 0, w, h);
   cr->fill();
-  cr->set_line_width(2.0);
-  cr->set_source_rgb(0.502, 0.502, 0.502);
-  cr->move_to(1, h - 1);
-  cr->line_to(1, 1);
-  cr->line_to(w - 1, 1);
-  cr->stroke();
-  cr->set_source_rgb(1.0, 1.0, 1.0);
-  cr->move_to(1, h - 1);
-  cr->line_to(w - 1, h - 1);
-  cr->line_to(w - 1, 1);
-  cr->stroke();
+  draw_bevel(cr, 0, 0, w, h, true, 2.0);
 
   const bool lost = board_.phase() == Phase::lost;
   for (int r = 0; r < kH; ++r) {
@@ -237,7 +232,11 @@ bool MineField::on_draw(const Cairo::RefPtr<Cairo::Context>& cr)
       const bool show_mine = cell.mine && (cell.revealed || (lost && !cell.flagged));
       const bool wrong_flag = lost && cell.flagged && !cell.mine;
 
-      if (cell.revealed || show_mine) {
+      if (wrong_flag) {
+        draw_sunken(cr, x, y, kCell, false);
+        draw_mine(cr, x, y, kCell);
+        draw_x(cr, x, y, kCell);
+      } else if (cell.revealed || show_mine) {
         draw_sunken(cr, x, y, kCell, boom);
         if (cell.mine)
           draw_mine(cr, x, y, kCell);
@@ -249,8 +248,6 @@ bool MineField::on_draw(const Cairo::RefPtr<Cairo::Context>& cr)
         if (cell.flagged)
           draw_flag(cr, x, y, kCell);
       }
-      if (wrong_flag)
-        draw_x(cr, x, y, kCell);
     }
   }
   return true;

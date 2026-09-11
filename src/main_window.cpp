@@ -24,13 +24,16 @@ MainWindow::MainWindow()
   well_.set_border_width(8);
   well_.pack_start(hud_, Gtk::PACK_SHRINK);
   well_.pack_start(field_, Gtk::PACK_SHRINK);
+  chrome_.set_shadow_type(Gtk::SHADOW_OUT);
+  chrome_.set_border_width(3);
+  chrome_.add(well_);
 
   field_.signal_pressing().connect(sigc::mem_fun(*this, &MainWindow::on_pressing));
   field_.signal_changed().connect(sigc::mem_fun(*this, &MainWindow::on_changed));
   hud_.signal_new_game().connect(sigc::mem_fun(*this, &MainWindow::on_new));
 
   root_.pack_start(menubar_, Gtk::PACK_SHRINK);
-  root_.pack_start(well_, Gtk::PACK_SHRINK);
+  root_.pack_start(chrome_, Gtk::PACK_SHRINK);
   add(root_);
   show_all();
 }

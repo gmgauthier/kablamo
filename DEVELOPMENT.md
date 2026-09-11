@@ -13,7 +13,7 @@ LCOS already ships AisleRiot, Micropolis, Maelstrom, Zork. It does **not** ship 
 
 ## Status (2026-09-11)
 
-**M1 in tree.** Playable 9×9 / 10 mines: first-click safe, flood fill, flags, win/lose, timer.
+**M2 in tree.** Win95 chrome: LCD ghost segments, 3D face button, nested bevels, wrong-flag mine+X.
 
 ## 1. Locked decisions
 
@@ -60,11 +60,11 @@ Timer: 1 s ticks while playing, cap 999.
 
 Scaffold. Empty 9×9 raised grid, face, counters at 10 / 000. New and F2 reset the drawing. Clicks depress a cell; no mines yet.
 
-### M1 — Playable (this slice)
+### M1 — Playable
 
 Reveal / flood / flag / first-click safe / win / lose. Timer. Face states.
 
-### M2 — Chrome polish
+### M2 — Chrome polish (this slice)
 
 Win95 number colors, detonated mine, wrong-flag X, LCD polish. README: **Vended by Grok Build**.
 

@@ -10,7 +10,7 @@ LCOS itself: [https://github.com/BryanLunduke/LCOS](https://github.com/BryanLund
 
 ## Status
 
-**M1 in tree.** Playable 9×9 / 10 mines. First click is safe. F2 or the face starts a new game.
+**M2 in tree.** Playable 9×9 with Win95 LCD, 3D face, and bevels. Packaging is M3.
 
 | Doc | What |
 |---|---|
