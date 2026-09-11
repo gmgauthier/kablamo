@@ -35,6 +35,7 @@ executable(
   'src/about_dialog.cpp',
   'src/hud.cpp',
   'src/mine_field.cpp',
+  'src/board.cpp',
   include_directories: inc,
   dependencies: [gtkmm],
   install: true,

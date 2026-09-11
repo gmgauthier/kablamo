@@ -2,6 +2,7 @@
 
 #pragma once
 
+#include "board.hpp"
 #include "hud.hpp"
 #include "mine_field.hpp"
 
@@ -20,6 +21,10 @@ class MainWindow : public Gtk::Window {
   void on_quit();
   void on_about();
   void on_pressing(bool down);
+  void on_changed();
+  void sync_hud();
+  void stop_timer();
+  bool on_tick();
 
   Gtk::MenuItem* add_item(Gtk::Menu& menu, const Glib::ustring& label,
                           const sigc::slot<void()>& slot, guint key = 0,
@@ -31,9 +36,12 @@ class MainWindow : public Gtk::Window {
   Gtk::Box root_{Gtk::ORIENTATION_VERTICAL, 0};
   Gtk::MenuBar menubar_;
   Gtk::Box well_{Gtk::ORIENTATION_VERTICAL, 6};
+  Board board_;
   Hud hud_;
-  MineField field_;
+  MineField field_{board_};
   Glib::RefPtr<Gtk::AccelGroup> accel_;
+  sigc::connection tick_;
+  int seconds_ = 0;
 };
 
 }  // namespace kablamo

@@ -13,7 +13,7 @@ LCOS already ships AisleRiot, Micropolis, Maelstrom, Zork. It does **not** ship 
 
 ## Status (2026-09-11)
 
-**M0 in tree.** Window, menus, empty 9×9 raised grid, face, LCD counters. Mines come in M1.
+**M1 in tree.** Playable 9×9 / 10 mines: first-click safe, flood fill, flags, win/lose, timer.
 
 ## 1. Locked decisions
 
@@ -56,11 +56,11 @@ Timer: 1 s ticks while playing, cap 999.
 
 ## 4. Milestones
 
-### M0 — Window (this slice)
+### M0 — Window
 
 Scaffold. Empty 9×9 raised grid, face, counters at 10 / 000. New and F2 reset the drawing. Clicks depress a cell; no mines yet.
 
-### M1 — Playable
+### M1 — Playable (this slice)
 
 Reveal / flood / flag / first-click safe / win / lose. Timer. Face states.
 

@@ -26,6 +26,7 @@ MainWindow::MainWindow()
   well_.pack_start(field_, Gtk::PACK_SHRINK);
 
   field_.signal_pressing().connect(sigc::mem_fun(*this, &MainWindow::on_pressing));
+  field_.signal_changed().connect(sigc::mem_fun(*this, &MainWindow::on_changed));
   hud_.signal_new_game().connect(sigc::mem_fun(*this, &MainWindow::on_new));
 
   root_.pack_start(menubar_, Gtk::PACK_SHRINK);
@@ -83,8 +84,60 @@ void MainWindow::build_menu()
   add_menu("_Help", *help);
 }
 
+void MainWindow::stop_timer()
+{
+  if (tick_.connected())
+    tick_.disconnect();
+}
+
+bool MainWindow::on_tick()
+{
+  if (board_.phase() != Phase::playing)
+    return false;
+  if (seconds_ < 999)
+    ++seconds_;
+  hud_.set_seconds(seconds_);
+  return true;
+}
+
+void MainWindow::sync_hud()
+{
+  hud_.set_remaining(board_.remaining());
+  switch (board_.phase()) {
+    case Phase::won:
+      stop_timer();
+      hud_.set_face(Face::won);
+      break;
+    case Phase::lost:
+      stop_timer();
+      hud_.set_face(Face::dead);
+      break;
+    case Phase::playing:
+      if (!tick_.connected()) {
+        seconds_ = 1;
+        hud_.set_seconds(seconds_);
+        tick_ = Glib::signal_timeout().connect(sigc::mem_fun(*this, &MainWindow::on_tick),
+                                               1000);
+      }
+      break;
+    case Phase::ready:
+    default:
+      stop_timer();
+      hud_.set_face(Face::smile);
+      break;
+  }
+}
+
+void MainWindow::on_changed()
+{
+  sync_hud();
+}
+
 void MainWindow::on_new()
 {
+  stop_timer();
+  seconds_ = 0;
+  board_.reset();
   field_.reset();
   hud_.reset();
 }
@@ -102,6 +155,8 @@ void MainWindow::on_about()
 
 void MainWindow::on_pressing(bool down)
 {
+  if (board_.phase() == Phase::won || board_.phase() == Phase::lost)
+    return;
   hud_.set_face(down ? Face::wow : Face::smile);
 }
 

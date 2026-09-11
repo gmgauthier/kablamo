@@ -48,7 +48,7 @@ void seg_v(const Cairo::RefPtr<Cairo::Context>& cr, double x, double y, double h
 
 Hud::Hud()
 {
-  set_size_request(MineField::kPad * 2 + MineField::kW * MineField::kCell, 40);
+  set_size_request(MineField::kPad * 2 + kW * MineField::kCell, 40);
   set_hexpand(false);
   set_vexpand(false);
   add_events(Gdk::BUTTON_PRESS_MASK | Gdk::BUTTON_RELEASE_MASK);
@@ -114,13 +114,20 @@ void Hud::draw_lcd(const Cairo::RefPtr<Cairo::Context>& cr, double x, double y, 
   cr->set_source_rgb(0.0, 0.0, 0.0);
   cr->rectangle(x, y, kLcdW, kLcdH);
   cr->fill();
+  const bool neg = value < 0;
   int n = std::abs(value);
   const int ones = n % 10;
   n /= 10;
   const int tens = n % 10;
   n /= 10;
   const int hun = n % 10;
-  draw_digit(cr, x + 2, y + 1, hun);
+  if (neg) {
+    cr->set_source_rgb(1.0, 0.15, 0.1);
+    cr->rectangle(x + 4, y + 11, 8, 2.5);
+    cr->fill();
+  } else {
+    draw_digit(cr, x + 2, y + 1, hun);
+  }
   draw_digit(cr, x + 2 + kDigitW, y + 1, tens);
   draw_digit(cr, x + 2 + kDigitW * 2, y + 1, ones);
   (void)kDigitH;

@@ -10,7 +10,7 @@ LCOS itself: [https://github.com/BryanLunduke/LCOS](https://github.com/BryanLund
 
 ## Status
 
-**M0 in tree.** Window, 9×9 raised grid, face, counters. Playable mines in M1.
+**M1 in tree.** Playable 9×9 / 10 mines. First click is safe. F2 or the face starts a new game.
 
 | Doc | What |
 |---|---|
