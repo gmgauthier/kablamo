@@ -48,8 +48,8 @@ void MainWindow::load_css()
   try {
     auto css = Gtk::CssProvider::create();
     css->load_from_path(css_path);
-    Gtk::StyleContext::add_provider_for_screen(
-        Gdk::Screen::get_default(), css, GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
+    Gtk::StyleContext::add_provider_for_screen(Gdk::Screen::get_default(), css,
+                                               GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
   } catch (const Glib::Error& e) {
     std::cerr << "kablamo: CSS: " << e.what() << "\n";
   }
@@ -119,8 +119,7 @@ void MainWindow::sync_hud()
       if (!tick_.connected()) {
         seconds_ = 1;
         hud_.set_seconds(seconds_);
-        tick_ = Glib::signal_timeout().connect(sigc::mem_fun(*this, &MainWindow::on_tick),
-                                               1000);
+        tick_ = Glib::signal_timeout().connect(sigc::mem_fun(*this, &MainWindow::on_tick), 1000);
       }
       break;
     case Phase::ready:
