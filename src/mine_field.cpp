@@ -54,7 +54,8 @@ void rgb_for_num(int n, double& r, double& g, double& b)
 
 }  // namespace
 
-MineField::MineField(Board& board) : board_(board)
+MineField::MineField(Board& board)
+    : board_(board)
 {
   set_size_request(field_width(), field_height());
   set_hexpand(false);
@@ -85,8 +86,8 @@ bool MineField::over_press(int r, int c) const
   return press_r_ == r && press_c_ == c && hover_r_ == r && hover_c_ == c;
 }
 
-void MineField::draw_raised(const Cairo::RefPtr<Cairo::Context>& cr, double x, double y,
-                            double s, bool down) const
+void MineField::draw_raised(const Cairo::RefPtr<Cairo::Context>& cr, double x, double y, double s,
+                            bool down) const
 {
   cr->set_line_width(1.0);
   cr->set_source_rgb(0.753, 0.753, 0.753);
@@ -122,8 +123,8 @@ void MineField::draw_raised(const Cairo::RefPtr<Cairo::Context>& cr, double x, d
   }
 }
 
-void MineField::draw_sunken(const Cairo::RefPtr<Cairo::Context>& cr, double x, double y,
-                            double s, bool boom) const
+void MineField::draw_sunken(const Cairo::RefPtr<Cairo::Context>& cr, double x, double y, double s,
+                            bool boom) const
 {
   if (boom)
     cr->set_source_rgb(1.0, 0.0, 0.0);
@@ -183,8 +184,7 @@ void MineField::draw_mine(const Cairo::RefPtr<Cairo::Context>& cr, double x, dou
   cr->fill();
 }
 
-void MineField::draw_x(const Cairo::RefPtr<Cairo::Context>& cr, double x, double y,
-                       double s) const
+void MineField::draw_x(const Cairo::RefPtr<Cairo::Context>& cr, double x, double y, double s) const
 {
   cr->set_source_rgb(1.0, 0.0, 0.0);
   cr->set_line_width(2.0);
@@ -195,8 +195,8 @@ void MineField::draw_x(const Cairo::RefPtr<Cairo::Context>& cr, double x, double
   cr->stroke();
 }
 
-void MineField::draw_number(const Cairo::RefPtr<Cairo::Context>& cr, double x, double y,
-                            double s, int n)
+void MineField::draw_number(const Cairo::RefPtr<Cairo::Context>& cr, double x, double y, double s,
+                            int n)
 {
   double R, G, B;
   rgb_for_num(n, R, G, B);
