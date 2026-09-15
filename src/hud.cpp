@@ -138,8 +138,7 @@ void Hud::draw_lcd(const Cairo::RefPtr<Cairo::Context>& cr, double x, double y, 
   (void)kDigitH;
 }
 
-void Hud::draw_face(const Cairo::RefPtr<Cairo::Context>& cr, double cx, double cy,
-                    double r) const
+void Hud::draw_face(const Cairo::RefPtr<Cairo::Context>& cr, double cx, double cy, double r) const
 {
   const double bs = r * 2 + 6;
   const double bx = cx - bs / 2.0;

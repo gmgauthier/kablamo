@@ -16,11 +16,23 @@ class MineField : public Gtk::DrawingArea {
   explicit MineField(Board& board);
 
   void reset();
-  int field_width() const { return kPad * 2 + kW * kCell; }
-  int field_height() const { return kPad * 2 + kH * kCell; }
+  int field_width() const
+  {
+    return kPad * 2 + kW * kCell;
+  }
+  int field_height() const
+  {
+    return kPad * 2 + kH * kCell;
+  }
 
-  sigc::signal<void, bool>& signal_pressing() { return signal_pressing_; }
-  sigc::signal<void>& signal_changed() { return signal_changed_; }
+  sigc::signal<void, bool>& signal_pressing()
+  {
+    return signal_pressing_;
+  }
+  sigc::signal<void>& signal_changed()
+  {
+    return signal_changed_;
+  }
 
  protected:
   bool on_draw(const Cairo::RefPtr<Cairo::Context>& cr) override;
@@ -38,8 +50,7 @@ class MineField : public Gtk::DrawingArea {
                    bool boom) const;
   void draw_flag(const Cairo::RefPtr<Cairo::Context>& cr, double x, double y, double s) const;
   void draw_mine(const Cairo::RefPtr<Cairo::Context>& cr, double x, double y, double s) const;
-  void draw_number(const Cairo::RefPtr<Cairo::Context>& cr, double x, double y, double s,
-                   int n);
+  void draw_number(const Cairo::RefPtr<Cairo::Context>& cr, double x, double y, double s, int n);
   void draw_x(const Cairo::RefPtr<Cairo::Context>& cr, double x, double y, double s) const;
 
   Board& board_;

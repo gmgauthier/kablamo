@@ -17,7 +17,10 @@ class Hud : public Gtk::DrawingArea {
   void set_face(Face f);
   void reset();
 
-  sigc::signal<void>& signal_new_game() { return signal_new_game_; }
+  sigc::signal<void>& signal_new_game()
+  {
+    return signal_new_game_;
+  }
 
  protected:
   bool on_draw(const Cairo::RefPtr<Cairo::Context>& cr) override;

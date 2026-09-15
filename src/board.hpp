@@ -25,10 +25,19 @@ class Board {
   bool reveal(int r, int c);
   void toggle_flag(int r, int c);
   int remaining() const;
-  Phase phase() const { return phase_; }
+  Phase phase() const
+  {
+    return phase_;
+  }
   const Cell& at(int r, int c) const;
-  int boom_r() const { return boom_r_; }
-  int boom_c() const { return boom_c_; }
+  int boom_r() const
+  {
+    return boom_r_;
+  }
+  int boom_c() const
+  {
+    return boom_c_;
+  }
 
  private:
   void ensure_mines(int safe_r, int safe_c);
