@@ -81,7 +81,7 @@ Intermediate / Expert / custom, chord-click, question marks, Best Times, sound.
 - 81 GtkButtons
 - Mines before first click
 - Custom title bar
-- Overriding `GTK_THEME`; `prefer_light_theme` only
+- Overriding `GTK_THEME` when it is already set. Unset: Clearlooks-Phenix, then Clearlooks, then Adwaita:light (`prefer_light_theme`)
 - Bryan’s seal
 
 ## Process
