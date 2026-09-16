@@ -22,7 +22,7 @@ Nothing queued. v1 (M0–M3) is tagged: fixed 9×9, 10 mines. Parked work lives 
 - Mines placed before the first click
 - A save file
 - Network
-- Custom title bar; do not override `GTK_THEME`
+- Custom title bar. `GTK_THEME` in the environment still wins; else Clearlooks-Phenix, then Clearlooks, then Adwaita:light (process only)
 - Bryan’s seal
 - Replacing AisleRiot / Micropolis / Maelstrom / Zork (those already ship on the ISO)
 
