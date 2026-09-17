@@ -10,9 +10,9 @@ Build-Depends:
  g++,
  libgtkmm-3.0-dev
 Standards-Version: 4.7.0
-Homepage: https://gitea.scriptorium/gmgauthier/kablamo
-Vcs-Git: https://gitea.scriptorium/gmgauthier/kablamo.git
-Vcs-Browser: https://gitea.scriptorium/gmgauthier/kablamo
+Homepage: https://github.com/gmgauthier/kablamo
+Vcs-Git: https://github.com/gmgauthier/kablamo.git
+Vcs-Browser: https://github.com/gmgauthier/kablamo
 Rules-Requires-Root: no
 
 Package: kablamo
