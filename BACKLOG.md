@@ -1,6 +1,6 @@
 # Kablamo! backlog
 
-Current release: **v0.1.1**. Last updated: 2026-09-16.
+Current release: **v0.1.2**. Last updated: 2026-10-01.
 
 Win 3.1 / 95 Minesweeper. Binary `kablamo`. Suite catalog: `lcos-projects/PRODUCT-BACKLOG.md`. Plan: [DEVELOPMENT.md](DEVELOPMENT.md). How to land work: [DEVELOPMENT.md](DEVELOPMENT.md#process) — `feature/` / `fix/` branches, PRs to `master`, lint gate, semver on shipped PRs.
 
@@ -27,5 +27,7 @@ Nothing queued. v1 (M0–M3) is tagged: fixed 9×9, 10 mines. Parked work lives 
 - Replacing AisleRiot / Micropolis / Maelstrom / Zork (those already ship on the ISO)
 
 ## Shipped
+
+**v0.1.2** — Headless meson test suite, and known defects recorded in BUG-BACKLOG.md.
 
 **v0.1.0 (M0–M3)** — Fixed 9×9, 10 mines; first click safe; left-click reveal; right-click flag; flood zeros; win/lose; timer cap 999; Win95 LCD counters; face (smile / dead / shades / `O_O`); New / F2; detonated mine and wrong-flag X; `.deb` / tarball / AppImage. No save file.
