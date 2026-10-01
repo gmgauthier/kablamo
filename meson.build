@@ -62,3 +62,11 @@ install_data(
   rename: 'kablamo.svg',
   install_dir: get_option('datadir') / 'icons' / 'hicolor' / 'scalable' / 'apps',
 )
+
+kablamo_tests = executable(
+  'kablamo-tests',
+  'tests/test_board.cpp',
+  'src/board.cpp',
+  include_directories: inc,
+)
+test('board', kablamo_tests)
