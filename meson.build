@@ -1,7 +1,7 @@
 project(
   'kablamo',
   'cpp',
-  version: '0.1.2',
+  version: '0.1.3',
   license: 'Unlicense',
   meson_version: '>=0.56',
   default_options: [
@@ -70,3 +70,10 @@ kablamo_tests = executable(
   include_directories: inc,
 )
 test('board', kablamo_tests)
+
+clock_tests = executable(
+  'kablamo-clock-tests',
+  'tests/test_clock.cpp',
+  include_directories: inc,
+)
+test('clock', clock_tests)

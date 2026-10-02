@@ -3,6 +3,7 @@
 #pragma once
 
 #include "board.hpp"
+#include "game_clock.hpp"
 #include "hud.hpp"
 #include "mine_field.hpp"
 
@@ -42,7 +43,7 @@ class MainWindow : public Gtk::Window {
   MineField field_{board_};
   Glib::RefPtr<Gtk::AccelGroup> accel_;
   sigc::connection tick_;
-  int seconds_ = 0;
+  GameClock clock_;
 };
 
 }  // namespace kablamo
