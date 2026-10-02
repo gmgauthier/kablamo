@@ -89,6 +89,7 @@ void MainWindow::build_menu()
 
 void MainWindow::stop_timer()
 {
+  clock_.stop();
   if (tick_.connected())
     tick_.disconnect();
 }
@@ -97,9 +98,8 @@ bool MainWindow::on_tick()
 {
   if (board_.phase() != Phase::playing)
     return false;
-  if (seconds_ < 999)
-    ++seconds_;
-  hud_.set_seconds(seconds_);
+  clock_.tick();
+  hud_.set_seconds(clock_.seconds());
   return true;
 }
 
@@ -117,8 +117,8 @@ void MainWindow::sync_hud()
       break;
     case Phase::playing:
       if (!tick_.connected()) {
-        seconds_ = 1;
-        hud_.set_seconds(seconds_);
+        clock_.start();
+        hud_.set_seconds(clock_.seconds());
         tick_ = Glib::signal_timeout().connect(sigc::mem_fun(*this, &MainWindow::on_tick), 1000);
       }
       break;
@@ -138,7 +138,7 @@ void MainWindow::on_changed()
 void MainWindow::on_new()
 {
   stop_timer();
-  seconds_ = 0;
+  clock_.reset();
   board_.reset();
   field_.reset();
   hud_.reset();

@@ -70,3 +70,10 @@ kablamo_tests = executable(
   include_directories: inc,
 )
 test('board', kablamo_tests)
+
+clock_tests = executable(
+  'kablamo-clock-tests',
+  'tests/test_clock.cpp',
+  include_directories: inc,
+)
+test('clock', clock_tests)
