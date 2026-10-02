@@ -31,6 +31,19 @@ meson compile -C build
 ./build/kablamo
 ```
 
+### macOS
+
+Homebrew's GTK3 draws through Quartz, so no X server is needed.
+
+```
+brew install gtkmm3 meson ninja pkgconf clang-format cppcheck
+meson setup build
+meson compile -C build
+./build/kablamo
+```
+
+It runs as a plain GTK window: no global menu bar, Ctrl shortcuts rather than Cmd, and no `.app` bundle.
+
 PR lint gate: `./scripts/lint.sh` (CI runs this; no `--fix`). Format `src/` locally with `./scripts/lint.sh --fix`.
 
 Install: [INSTALL.md](INSTALL.md).
