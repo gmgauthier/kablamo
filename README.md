@@ -16,7 +16,7 @@ LCOS itself: [https://github.com/BryanLunduke/LCOS](https://github.com/BryanLund
 
 ## Status
 
-**v0.1.3 (M0–M3).** 9×9 Minesweeper: first-click safe, flags, Win95 LCD and face. Headless test suite and BUG-BACKLOG.md. See [INSTALL.md](INSTALL.md).
+**v0.1.4 (M0–M3).** 9×9 Minesweeper: first-click safe, flags, Win95 LCD and face. Headless test suite and BUG-BACKLOG.md. See [INSTALL.md](INSTALL.md).
 
 | Doc | What |
 |---|---|
